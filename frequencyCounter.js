@@ -205,6 +205,25 @@ function theLongersUniqCharInStr(str){
     return longSubStr;
 }
 
+function sameFrequency(num, num2){
+    num=num.toString();
+    num = num.split('');
+    num2=num2.toString();
+    num2 = num2.split('');
+    if(num.length !== num2.length){
+        return false;
+    }
+    for(var i = 0; i<num.length; i++){
+        let finder = num2.indexOf(num[i]);
+        if(finder === -1){
+            return false;
+        }
+        else{
+            num2.splice(finder, 1);
+        }
+    }
+    return true;
+}
 // 'helloafricaiamethiopiabcdqthlfru'=>should returns iabcdqthlfru
 // theLongersUniqCharInStr('helloafricaiamethiopiabcdqthlfru')
 function sameFrequency1(num1, num2){//Time Complexity Big O(n)
@@ -229,7 +248,7 @@ function sameFrequency1(num1, num2){//Time Complexity Big O(n)
     console.log('found all matching value')
     return true;
 }
-sameFrequency1(2.131,321.1);
+// sameFrequency1(2.131,321.1);
 
 function sameFrequency(num1, num2){//Time complexity Big O(n)
     //given the two number, check if they have the same frequency
@@ -266,4 +285,23 @@ function sameFrequency(num1, num2){//Time complexity Big O(n)
     console.log('not found here')
     return false;
 }
-sameFrequency(61415.32, 3211.645);
+// sameFrequency(61415.32, 3211.645);
+
+function checkForDuplicate(...args){
+    let freCounter = {};
+    for(let val of args){
+        if(!freCounter[val]){
+            freCounter[val] = 1;
+        }else{
+            console.log('fond duplication')
+            return true;
+        }
+    }
+    console.log('No duplication value found!')
+    return false;
+}
+// checkForDuplicate(1,2,4,5,6)
+
+// function isSubsequence(str1, str2){
+//     let 
+// }
