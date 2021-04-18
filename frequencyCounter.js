@@ -9,9 +9,9 @@ function countChar(word){
     if(!word || typeof word !== 'string') return `${type} is not invalid input`
     word = word.toLowerCase();  
     for(let i = 0; i<word.length; i++){
-       if(isAlphaNumeric(word[i])){
-           counter[word[i]] = ++counter[word[i]] || 1;
-       }
+        if(isAlphaNumeric(word[i])){
+            counter[word[i]] = ++counter[word[i]] || 1;
+        }
     }
     return counter;
 }
@@ -24,7 +24,7 @@ function isAlphaNumeric(char){
     if(
         (code>=sChar && code<=bChar) || 
         (code>=sNum && code<=bNum)
-       ){
+        ){
             return true;
         }
         return false;
@@ -40,7 +40,7 @@ function same(arr1, arr2){
     for(let i = 0; i<arr1.length; i++){
         let idx = arr2.indexOf(arr1[i] * arr1[i]);
         if(idx === -1){
-            console.log('comming from no squer found!', i)
+            console.log('coming from no squer found!', i);
             return false;
         }
         arr2.splice(idx, 1);
@@ -206,4 +206,64 @@ function theLongersUniqCharInStr(str){
 }
 
 // 'helloafricaiamethiopiabcdqthlfru'=>should returns iabcdqthlfru
-theLongersUniqCharInStr('helloafricaiamethiopiabcdqthlfru')
+// theLongersUniqCharInStr('helloafricaiamethiopiabcdqthlfru')
+function sameFrequency1(num1, num2){//Time Complexity Big O(n)
+    num1 = num1.toString().split('');
+    num2 = num2.toString().split('');
+    if(num1.length !== num2.length){
+        console.log('false coming from length not equal')
+        return false;
+    }
+    let num1Counter = {};
+    let num2Counter = {};
+    for(let i = 0; i<num1.length; i++){
+        num1Counter[num1[i]] = (num1Counter[num1[i]] || 0) +1;
+        num2Counter[num2[i]] = (num2Counter[num2[i]] || 0) + 1;
+    }
+    for(let key in num1Counter){
+        if(!(key in num2Counter) && num1Counter[key] !== num2Counter[key]){
+            console.log('false coming from values or frequency are not equal')
+            return false;
+        }
+    }
+    console.log('found all matching value')
+    return true;
+}
+sameFrequency1(2.131,321.1);
+
+function sameFrequency(num1, num2){//Time complexity Big O(n)
+    //given the two number, check if they have the same frequency
+    num1 = num1.toString().split('').sort();
+    num2 = num2.toString()
+    if(num1.length !== num2.length){
+        console.log('false coming from length not equal')
+        return false;
+    }
+    //['.', '1', '2', '3'], '3.12'
+    let i = 0;
+    let start = 0; 
+    let end = num1.length-1;
+    let mid = Math.floor((start+end)/2);
+    while(start<=end && i<num2.length){
+        if(num2[i] === num1[mid]){
+            i++;
+            num1.splice(mid, 1)
+            start = 0;
+            end = num1.length-1;
+        }
+        else if(num2[i]<num1[mid]){
+            end = mid-1;
+        }else{
+            start = mid+1;
+        }
+        mid = Math.floor((start+end)/2);
+    }
+    if(i>=num2.length){
+        console.log('fond all matching numbers', i);
+        return true;
+    }
+    console.log(num1, num2)
+    console.log('not found here')
+    return false;
+}
+sameFrequency(61415.32, 3211.645);
