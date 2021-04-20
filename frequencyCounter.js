@@ -40,12 +40,12 @@ function same(arr1, arr2){
     for(let i = 0; i<arr1.length; i++){
         let idx = arr2.indexOf(arr1[i] * arr1[i]);
         if(idx === -1){
-            console.log('coming from no squer found!', i);
+            console.log('coming from no square found!', i);
             return false;
         }
         arr2.splice(idx, 1);
     }
-    console.log('comming from found all matching squers')
+    console.log('coming from found all matching square')
     return true;
 }
 
@@ -286,7 +286,6 @@ function sameFrequency(num1, num2){//Time complexity Big O(n)
     return false;
 }
 // sameFrequency(61415.32, 3211.645);
-
 function checkForDuplicate(...args){
     let freCounter = {};
     for(let val of args){
@@ -297,11 +296,6 @@ function checkForDuplicate(...args){
             return true;
         }
     }
-    console.log('No duplication value found!')
     return false;
 }
-// checkForDuplicate(1,2,4,5,6)
-
-// function isSubsequence(str1, str2){
-//     let 
-// }
+checkForDuplicate(1,2,4,5,6)
