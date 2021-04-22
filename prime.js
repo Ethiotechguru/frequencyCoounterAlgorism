@@ -36,6 +36,7 @@ function isPrime(num) {//check is the given number is a prime number
         }
         i++;
     }
+    console.log(num, 'is a prime');
     return true;
 }
 
@@ -68,7 +69,7 @@ function primeFactors(num) {//get all prime factors of a given number
         return false;
     }
 }
-primeFactors(51)
+// primeFactors(51)
 
 function prove(num, arr) {//prove if multiple of the prime factors of the given number gives you the number it self
     let compere = num;
@@ -82,3 +83,4 @@ function prove(num, arr) {//prove if multiple of the prime factors of the given 
 }
 
 
+isPrime(8191)
